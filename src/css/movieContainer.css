@@ -1,0 +1,25 @@
+.movieContainer{
+    border : 1px inset white ; 
+    margin:0px 5px;
+    height: 99%;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background-color: #181117;
+    justify-items: center;
+    grid-gap:4px;
+}
+
+.loading{
+    position: relative;
+    top:50%; 
+    left:170%; 
+    transform: translate(-50%,-50%);
+}
+
+.noMovie{
+    color: rgb(226 205 223 / 22%);
+    position: absolute;
+    top: 50%;
+    font-size: xxx-large;
+}

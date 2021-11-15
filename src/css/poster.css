@@ -1,0 +1,62 @@
+.poster{
+    display: grid;
+    grid-template-rows: 1fr 1fr ;
+    position: absolute;
+    top:50%;
+    left:50%; 
+    transform: translate(-50%,-50%);
+    width : 80vw ; 
+    height : 90vh ; 
+    background: rgba(0 0 0 / 96%);
+    color : white ; 
+    border-radius: 30px;
+    border : 1px inset white;
+    padding : 15px ; 
+    animation: fadeIn 0.5s linear;
+}
+
+@keyframes fadeIn{
+    from{
+        left:-42%;
+    }
+    to{
+        left:50%;
+    }
+}
+
+.row{
+    display: grid;
+    grid-template-columns: 1fr 5fr ;
+    grid-gap : 20px ;
+}
+
+.row > img {
+    width : 95% ; 
+    padding : 10px;
+}
+
+.info{
+    padding : 20px ; 
+}
+
+.description{
+    overflow-y: scroll;
+    padding : 10px ; 
+}
+
+.close{
+    cursor: pointer;
+    position: absolute;
+    top:1%; 
+    right:3%;
+}
+.close:hover{
+    color: rgba(240, 248, 255, 0.376);
+}
+
+.load{
+    position: absolute;
+    top:50%; 
+    left : 50% ; 
+    transform: translate(-50%,-50%);
+}

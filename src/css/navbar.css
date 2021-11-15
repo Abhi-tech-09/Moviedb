@@ -1,0 +1,26 @@
+.navbar{
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(300px , 1fr)) ;
+    align-items: baseline;
+    background-color: rgba(0 0 0/ 85%);
+    color: antiquewhite;
+    border : 3px inset white ; 
+    outline: 1px outset black;
+}
+
+.title{
+    position: relative;
+    left:8%;
+}
+
+.navbar > input {
+    border : none ; 
+    border-bottom: 2px outset black;
+    outline : none ; 
+    font-size: x-large;
+    text-align: center;
+    width: fit-content;
+    justify-self: end;
+    background-color: rgba(0 0 0/ 0%);
+    color: gold;
+}
