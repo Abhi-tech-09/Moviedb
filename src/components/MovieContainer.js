@@ -1,4 +1,5 @@
-import { React, useState } from 'react'
+import { React, useState, useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import "../css/movieContainer.css";
 import MovieCard from './MovieCard';
 import gif from "../loading.gif"
@@ -11,15 +12,39 @@ Year: "2020"
 imdbID: "tt11317142"
 */
 
-export default function MovieContainer({ movieList, loading, nextPage, showPoster }) {
+export default function MovieContainer({ movielist, loading, nextPage, showPoster, search, scroll, setScroll }) {
+
+    const { movie } = useParams();
+    // console.log(movie);
+    const ref = useRef();
+
+
+    useEffect(() => {
+        search(movie);
+        // ref.current.scrollTop = scroll ; 
+        console.log(scroll);
+        
+        // console.log(ref.current.scrollTop,scroll);
+
+    }, []);
+    useEffect(() => {
+
+
+        ref.current.scrollTop = scroll;
+        // setScroll(ref.current.scrollHeight - ref.current.offsetHeight - 100)
+
+
+    });
+
+
+
 
     return (
-
-        <div className="movieContainer"
+        <div className="movieContainer" ref={ref}
             onScroll={
                 (e) => {
                     if (e.target.scrollHeight <= Math.ceil(e.target.scrollTop + e.target.offsetHeight)) {
-                        nextPage();
+                        nextPage(movie,ref);
                     };
                 }
             }>
@@ -27,9 +52,9 @@ export default function MovieContainer({ movieList, loading, nextPage, showPoste
                 <img className="loading" src={gif} alt="" />
                 :
                 (
-                    movieList == undefined ? <h1 className="noMovie">No Such movies Found !!</h1> :
-                        movieList.length == 0 ? <h1 className="noMovie">Nothing to Show...</h1> : movieList.map((movie, index) =>
-                            (<MovieCard movie={movie} showPoster={showPoster} key={index} />)
+                    movielist == undefined ? <h1 className="noMovie">No Such movies Found !!</h1> :
+                        movielist.length == 0 || movie == undefined ? <h1 className="noMovie">Nothing to Show...</h1> : movielist.map((movieEle, index) =>
+                            (<MovieCard movieName={movie} movie={movieEle} showPoster={showPoster} key={index} />)
                         )
 
 
@@ -39,7 +64,5 @@ export default function MovieContainer({ movieList, loading, nextPage, showPoste
 
 
         </div >
-
-
     )
 }

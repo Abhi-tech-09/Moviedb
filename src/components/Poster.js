@@ -1,10 +1,17 @@
 import React from 'react'
 import "../css/poster.css";
 import gif from "../loading.gif"
+import { useParams } from 'react-router';
+import { useEffect } from 'react';
 
 // {"Title":"Shiva Baby","Year":"2020","Rated":"Not Rated","Released":"02 Apr 2021","Runtime":"77 min","Genre":"Comedy, Drama","Director":"Emma Seligman","Writer":"Emma Seligman","Actors":"Rachel Sennott, Danny Deferrari, Fred Melamed","Plot":"At a Jewish funeral service with her parents, a college student runs into her sugar daddy.","Language":"English","Country":"United States, Canada","Awards":"5 wins & 20 nominations","Poster":"https://m.media-amazon.com/images/M/MV5BM2Y5ZDg1MmMtNjJkYS00NmEzLTk0ZjAtMGUxOTIyMDVlNzM1XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie Database","Value":"7.1/10"},{"Source":"Rotten Tomatoes","Value":"97%"},{"Source":"Metacritic","Value":"79/100"}],"Metascore":"79","imdbRating":"7.1","imdbVotes":"12,401","imdbID":"tt11317142","Type":"movie","DVD":"02 Apr 2021","BoxOffice":"$156,552","Production":"N/A","Website":"N/A","Response":"True"}
 
-export default function Poster({poster, setPoster }) {
+export default function Poster({poster, showPoster,setPoster }) {
+
+    const {movie,id} = useParams();
+    useEffect(()=>{
+        showPoster(id);
+    },[]) 
 
     if(poster === "loading"){
         return (
@@ -29,7 +36,8 @@ export default function Poster({poster, setPoster }) {
                     
                     <span className="close" onClick={
                         (e)=>{
-                            setPoster("null")
+                            setPoster("null"); 
+                            window.location.assign(`/${movie}`)
                         }
                     }>Close</span>
                 </div>

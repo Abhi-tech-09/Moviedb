@@ -9,13 +9,14 @@ Year: "2020"
 imdbID: "tt11317142"
 */
 
-export default function MovieCard({ movie, showPoster }) {
+export default function MovieCard({ movieName,  movie, showPoster }) {
     return (
         <div className="card"
         onClick={
             (e)=>{
                 // console.log(movie.imdbID);
                 showPoster(movie);
+                window.location.assign(`/${movieName}/${movie.imdbID}`)
                 
             }
         }>

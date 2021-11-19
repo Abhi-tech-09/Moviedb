@@ -1,7 +1,8 @@
 import { React } from 'react'
 import "../css/navbar.css"
+import { Link } from "react-router-dom";
 
-export default function Navbar({ setMovie, search }) {
+export default function Navbar({ setMovie }) {
 
 
     return (
@@ -14,7 +15,15 @@ export default function Navbar({ setMovie, search }) {
                         setMovie(e.target.value);
                     }
                 }
-                onKeyPress={search} />
+                onKeyPress={(e) => {
+                    if (e.code === "Enter") {
+                        e.preventDefault();
+                        window.location.assign(`/${e.target.value}`);
+                        // window.history.pushState("", "Movie-db", `/${e.target.value}`);
+                    }
+                }} />
+
+
 
         </div>
     )
